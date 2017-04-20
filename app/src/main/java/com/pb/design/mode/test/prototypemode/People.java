@@ -52,8 +52,7 @@ public class People implements Cloneable {
         } catch (CloneNotSupportedException exception) {
             Log.e(People.class.getName(), "Not support cloneable");
         }
-        if (object != null) {//原型模式使用clone方法去复制的时候，如果对象不是值对象，那么仅仅只是复制对象的地址，不是创建新的对象
-            School school = object.getSchool();
+        if (object != null) {//原型模式使用clone方法去复制的时候，如果对象不是值对象，那么仅仅只是复制对象的地址，不是创建新的对象            School school = object.getSchool();
             if (school != null) {
                 object.setSchool(school.clone());
             }

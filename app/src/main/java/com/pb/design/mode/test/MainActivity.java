@@ -13,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+    }
+
+    private void testSingleMode() {
         School school = new School();
         school.setAddress("泰邦科技大厦");
         school.setName("北大");
@@ -30,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
         peopleClone.setAge(23);
         peopleClone.getSchool().setName("人民大学");
 
-        Log.i("skyt",people.getName()+" "+people.getAge()+" "+people.getHeight()+" "+people.getSchool().getName()+" "+people.getSchool().getAddress());
-        Log.i("skyt",peopleClone.getName()+" "+peopleClone.getAge()+" "+peopleClone.getHeight()+" "+peopleClone.getSchool().getName()+" "+peopleClone.getSchool().getAddress());
-
+        Log.i("skyt", people.getName() + " " + people.getAge() + " " + people.getHeight() + " " + people.getSchool().getName() + " " + people.getSchool().getAddress());
+        Log.i("skyt", peopleClone.getName() + " " + peopleClone.getAge() + " " + peopleClone.getHeight() + " " + peopleClone.getSchool().getName() + " " + peopleClone.getSchool().getAddress());
     }
 }
