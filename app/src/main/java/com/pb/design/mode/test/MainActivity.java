@@ -8,6 +8,12 @@ import com.pb.design.mode.test.adaptermode.AdapterCharge;
 import com.pb.design.mode.test.adaptermode.HongKongCharge;
 import com.pb.design.mode.test.adaptermode.HongKongInterface;
 import com.pb.design.mode.test.adaptermode.Hotel;
+import com.pb.design.mode.test.bridgingmode.Bus;
+import com.pb.design.mode.test.bridgingmode.Car;
+import com.pb.design.mode.test.bridgingmode.Engine;
+import com.pb.design.mode.test.bridgingmode.Engine2000;
+import com.pb.design.mode.test.bridgingmode.Engine2200;
+import com.pb.design.mode.test.bridgingmode.Jeep;
 import com.pb.design.mode.test.prototypemode.People;
 import com.pb.design.mode.test.prototypemode.School;
 
@@ -19,7 +25,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         testAdapterMode();
 
+        testBridg();
 
+
+    }
+
+    private void testBridg() {
+        Engine engine2000 = new Engine2000();
+        Engine engine2200 = new Engine2200();
+
+        Car bus = new Bus(engine2000);
+        bus.installEngine();
+
+        Car jeep = new Jeep(engine2200);
+        jeep.installEngine();
     }
 
     private void testAdapterMode() {
