@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.pb.design.mode.test.adaptermode.AdapterCharge;
+import com.pb.design.mode.test.adaptermode.HongKongCharge;
+import com.pb.design.mode.test.adaptermode.HongKongInterface;
+import com.pb.design.mode.test.adaptermode.Hotel;
 import com.pb.design.mode.test.prototypemode.People;
 import com.pb.design.mode.test.prototypemode.School;
 
@@ -13,8 +17,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        testAdapterMode();
 
 
+    }
+
+    private void testAdapterMode() {
+        HongKongInterface hongKongInterface = new HongKongCharge();
+        Hotel hotel = new Hotel();
+        AdapterCharge adapterCharge = new AdapterCharge();
+        hotel.setCharge(adapterCharge);
+        hotel.charge();
     }
 
     private void testSingleMode() {
