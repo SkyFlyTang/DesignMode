@@ -22,6 +22,9 @@ import com.pb.design.mode.test.decorate.Bird;
 import com.pb.design.mode.test.decorate.Fish;
 import com.pb.design.mode.test.decorate.Monkey;
 import com.pb.design.mode.test.decorate.TheGreatestSage;
+import com.pb.design.mode.test.observe.PeopleA;
+import com.pb.design.mode.test.observe.Weather;
+import com.pb.design.mode.test.observe.WeatherObservable;
 import com.pb.design.mode.test.prototypemode.People;
 import com.pb.design.mode.test.prototypemode.School;
 import com.pb.design.mode.test.strategy.BinaryOrdering;
@@ -36,11 +39,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayList<Integer> list = new ArrayList<>();
-
-        testStrategy(list);
+        
 
 
+
+    }
+
+    private void testObserver() {
+        Weather weather = new Weather();
+        weather.setTemp(35);
+        weather.setHum(132);
+        weather.setWind(1);
+        PeopleA peopleA = new PeopleA(weather);
+        WeatherObservable observable = new WeatherObservable(weather);
+        observable.addObserver(peopleA);
+        observable.updateHum(500);
+        observable.updateTemp(19);
+        observable.updateWind(5);
     }
 
     private void testStrategy(ArrayList<Integer> list) {
