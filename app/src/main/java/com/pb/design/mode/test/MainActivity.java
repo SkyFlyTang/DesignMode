@@ -18,8 +18,17 @@ import com.pb.design.mode.test.componentmode.Folder;
 import com.pb.design.mode.test.componentmode.ImagerFile;
 import com.pb.design.mode.test.componentmode.TextFile;
 import com.pb.design.mode.test.componentmode.VideoFile;
+import com.pb.design.mode.test.decorate.Bird;
+import com.pb.design.mode.test.decorate.Fish;
+import com.pb.design.mode.test.decorate.Monkey;
+import com.pb.design.mode.test.decorate.TheGreatestSage;
 import com.pb.design.mode.test.prototypemode.People;
 import com.pb.design.mode.test.prototypemode.School;
+import com.pb.design.mode.test.strategy.BinaryOrdering;
+import com.pb.design.mode.test.strategy.QuickSort;
+import com.pb.design.mode.test.strategy.SortUtils;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,10 +36,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        testComponent();
+        ArrayList<Integer> list = new ArrayList<>();
+
+        testStrategy(list);
 
 
+    }
 
+    private void testStrategy(ArrayList<Integer> list) {
+        BinaryOrdering binaryOrdering = new BinaryOrdering();
+        QuickSort quickSort = new QuickSort();
+        SortUtils sortUtils = new SortUtils(binaryOrdering);
+        sortUtils.Sort(list);
+
+        sortUtils.setmISort(quickSort);
+        sortUtils.Sort(list);
+    }
+
+    private void testDecorate() {
+        TheGreatestSage sage = new Monkey();
+        //孙悟空变成一只鸟
+        Bird bird = new Bird(sage);
+        bird.move();
+        bird.fly();
+
+        //孙悟空变成一只鱼
+        Fish fish = new Fish(sage);
+        fish.move();
+        fish.swim();
     }
 
     private void testComponent() {
