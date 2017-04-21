@@ -33,6 +33,8 @@ import com.pb.design.mode.test.proxy.IGame;
 import com.pb.design.mode.test.strategy.BinaryOrdering;
 import com.pb.design.mode.test.strategy.QuickSort;
 import com.pb.design.mode.test.strategy.SortUtils;
+import com.pb.design.mode.test.template.Coffee;
+import com.pb.design.mode.test.template.Tee;
 
 import java.util.ArrayList;
 
@@ -42,10 +44,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        testProxyMode();
+        testTemplate();
 
 
+    }
 
+    private void testTemplate() {
+        Coffee coffee = new Coffee();
+        Tee tee = new Tee();
+        coffee.drink();
+        tee.drink();
     }
 
     private void testProxyMode() {
