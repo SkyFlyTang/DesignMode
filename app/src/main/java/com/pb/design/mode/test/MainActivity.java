@@ -14,6 +14,11 @@ import com.pb.design.mode.test.bridgingmode.Engine;
 import com.pb.design.mode.test.bridgingmode.Engine2000;
 import com.pb.design.mode.test.bridgingmode.Engine2200;
 import com.pb.design.mode.test.bridgingmode.Jeep;
+import com.pb.design.mode.test.command.Command;
+import com.pb.design.mode.test.command.ConcreteCommandImpl1;
+import com.pb.design.mode.test.command.ConcreteCommandImpl2;
+import com.pb.design.mode.test.command.InvokerRole;
+import com.pb.design.mode.test.command.ReceiverRole;
 import com.pb.design.mode.test.componentmode.Folder;
 import com.pb.design.mode.test.componentmode.ImagerFile;
 import com.pb.design.mode.test.componentmode.TextFile;
@@ -44,9 +49,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        testTemplate();
+        testCommand();
 
 
+    }
+
+    private void testCommand() {
+        //创建一个命令接收者
+        ReceiverRole receiverRole1 = new ReceiverRole();                //创建一个命令的具体实现对象，并指定命令接收者
+        Command command1 = new ConcreteCommandImpl1(receiverRole1);
+        Command command2 = new ConcreteCommandImpl2(receiverRole1);
+
+        InvokerRole invokerRole = new InvokerRole();//创建一个命令调用者
+        invokerRole.setCommand1(command1);//为调用者指定命令对象1
+        invokerRole.setCommand2(command2);//为调用者指定命令对象2
+        invokerRole.invoke(0);                //发起调用命令请求
+        invokerRole.invoke(1);                //发起调用命令请求
     }
 
     private void testTemplate() {
