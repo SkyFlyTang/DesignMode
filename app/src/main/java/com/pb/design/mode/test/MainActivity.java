@@ -27,6 +27,9 @@ import com.pb.design.mode.test.observe.Weather;
 import com.pb.design.mode.test.observe.WeatherObservable;
 import com.pb.design.mode.test.prototypemode.People;
 import com.pb.design.mode.test.prototypemode.School;
+import com.pb.design.mode.test.proxy.GamePlayer;
+import com.pb.design.mode.test.proxy.GamePlayerProxy;
+import com.pb.design.mode.test.proxy.IGame;
 import com.pb.design.mode.test.strategy.BinaryOrdering;
 import com.pb.design.mode.test.strategy.QuickSort;
 import com.pb.design.mode.test.strategy.SortUtils;
@@ -39,10 +42,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+        testProxyMode();
 
 
 
+    }
+
+    private void testProxyMode() {
+        IGame player = new GamePlayer("deep");
+        IGame proxy = new GamePlayerProxy(player);
+        proxy.move();
+        proxy.attack();
+        proxy.update();
+        proxy.dead();
     }
 
     private void testObserver() {
